@@ -8,7 +8,7 @@ deployment "simple" {
   }
 }
 
-deployment "simple" {
+deployment "mediocre" {
   inputs = {
     prefix    = "simple"
     instances = 1
