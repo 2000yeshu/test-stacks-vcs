@@ -2,9 +2,23 @@
 # SPDX-License-Identifier: MPL-2.0
 
 deployment "loadtest_1" {
-  for_each = var.inputs
+  count = 4
   inputs = {
-    prefix    = each.value.prefix
-    instances = each.value.instances
+    prefix    = "loadtest_1"
+    instances = 3
+  }
+}
+
+deployment "loadtest_2" {
+  inputs = {
+    prefix    = "loadtest_2"
+    instances = 5
+  }
+}
+
+deployment "loadtest_3" {
+  inputs = {
+    prefix    = "loadtest_3"
+    instances = 5
   }
 }
