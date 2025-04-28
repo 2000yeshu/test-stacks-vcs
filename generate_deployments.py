@@ -14,8 +14,9 @@ def main():
         sys.exit(1)
 
     if num_components < 2:
-        print("Number of components must be at least 2.")
-        sys.exit(1)
+        print("WARN: Number of components must be at least 2.")
+        num_components = 2
+        # sys.exit(1)
 
     blocks = [
         '# Copyright (c) HashiCorp, Inc.',
