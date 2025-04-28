@@ -24,7 +24,7 @@ component "nulls_1" {
 
   inputs = {
     pet       = each.value.name
-    instances = 10
+    instances = var.instances
   }
 
   providers = {
