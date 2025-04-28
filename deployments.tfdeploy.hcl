@@ -3,7 +3,7 @@
 
 deployment "loadtest_1" {
   inputs = {
-    prefixes    = toset(["prefix_1", "prefix_2", "prefix_3"])
+    prefixes    = ["prefix_1", "prefix_2", "prefix_3"]
     instances = 3
   }
 }
