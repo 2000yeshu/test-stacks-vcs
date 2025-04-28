@@ -18,5 +18,5 @@ Deployments Components Resources
 
 
 ``python3 generate_deployments 10 1 2``
-``python3 generate_deployments 10 4 1000``
+``python3 generate_deployments 10 4 10``
 ``python3 generate_deployments 10 10000 1``
