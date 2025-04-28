@@ -13,8 +13,8 @@ required_providers {
 provider "random" "this" {}
 provider "null" "this" {}
 
-variable "prefix" {
-  type = string
+variable "prefixes" {
+  type = set(string)
 }
 
 variable "instances" {
