@@ -23,7 +23,7 @@ component "nulls_1" {
   source = "./nulls"
 
   inputs = {
-    pet       = each.name
+    pet       = each.value.name
     instances = 10
   }
 
