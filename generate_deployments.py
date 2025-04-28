@@ -43,7 +43,7 @@ def main():
 
     with open("deployments.tfdeploy.hcl", "w") as f:
         f.write("\n".join(blocks))
-    print(f"Generated {num_deployments} deployment blocks in deployments.tfdeploy.hcl with {num_resources} instances each and {num_prefixes} prefixes per deployment.")
+    print(f"Generated {num_deployments} deployment blocks in deployments.tfdeploy.hcl with {num_resources} nulls instances each and total {num_components} components per deployment.")
 
 if __name__ == "__main__":
     main()

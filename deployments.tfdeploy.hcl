@@ -3,14 +3,70 @@
 
 deployment "loadtest_1" {
   inputs = {
-    prefixes  = ["prefix_9", "prefix_8", "prefix_5", "prefix_10", "prefix_3"]
-    instances = 3
+    prefixes  = ["prefix_1"]
+    instances = 1
   }
 }
 
 deployment "loadtest_2" {
   inputs = {
-    prefixes  = ["prefix_10", "prefix_6", "prefix_9", "prefix_2", "prefix_1"]
-    instances = 3
+    prefixes  = ["prefix_1"]
+    instances = 1
+  }
+}
+
+deployment "loadtest_3" {
+  inputs = {
+    prefixes  = ["prefix_1"]
+    instances = 1
+  }
+}
+
+deployment "loadtest_4" {
+  inputs = {
+    prefixes  = ["prefix_1"]
+    instances = 1
+  }
+}
+
+deployment "loadtest_5" {
+  inputs = {
+    prefixes  = ["prefix_1"]
+    instances = 1
+  }
+}
+
+deployment "loadtest_6" {
+  inputs = {
+    prefixes  = ["prefix_1"]
+    instances = 1
+  }
+}
+
+deployment "loadtest_7" {
+  inputs = {
+    prefixes  = ["prefix_2"]
+    instances = 1
+  }
+}
+
+deployment "loadtest_8" {
+  inputs = {
+    prefixes  = ["prefix_2"]
+    instances = 1
+  }
+}
+
+deployment "loadtest_9" {
+  inputs = {
+    prefixes  = ["prefix_2"]
+    instances = 1
+  }
+}
+
+deployment "loadtest_10" {
+  inputs = {
+    prefixes  = ["prefix_2"]
+    instances = 1
   }
 }
