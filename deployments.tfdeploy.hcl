@@ -4,7 +4,7 @@
 deployment "loadtest_1" {
   inputs = {
     prefixes    = ["prefix_1", "prefix_2", "prefix_3"]
-    instances = 3
+    instances = 5
   }
 }
 

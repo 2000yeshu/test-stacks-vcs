@@ -1,10 +1,5 @@
 This repo will contain pet nulls configuration
 
+To set the number of resources in each deployment, set the number of instances.
 
-Generate stack with n deployments
-``python3 generate_config.py n``
-
-Generate stack with n components
-``python3 generate_components.py n``
-
-For e.g. generate a stack with 10 components and 5 deployments
+To set the number of components per deployment set the length of prefixes to half the desired number.
