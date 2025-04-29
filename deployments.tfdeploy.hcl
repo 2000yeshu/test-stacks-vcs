@@ -6,6 +6,8 @@ deployment "loadtest_1" {
     prefixes  = ["prefix_1"]
     instances = 5
   }
+
+  deployment_group = deployment_group.canary
 }
 
 deployment "loadtest_2" {
@@ -13,6 +15,13 @@ deployment "loadtest_2" {
     prefixes  = ["prefix_1"]
     instances = 5
   }
+
+  deployment_group = deployment_group.canary
+}
+
+deployment_group "canary" {
+  fault_tolerance_count = 0
+  eager_plan = "on"
 }
 
 deployment "loadtest_3" {

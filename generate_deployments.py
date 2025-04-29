@@ -14,7 +14,7 @@ def main():
         sys.exit(1)
 
     if num_components < 2:
-        print("WARN: Number of components must be at least 2.")
+        print("WARN: Minimum number of components is 2.")
         num_components = 2
         # sys.exit(1)
 
