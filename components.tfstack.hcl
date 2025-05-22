@@ -15,7 +15,7 @@ component "pet" {
 }
 
 component "nulls" {
-  for_each = component.pet_1
+  for_each = component.pet
   source = "./nulls"
 
   inputs = {
