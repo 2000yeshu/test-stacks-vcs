@@ -1,29 +1,23 @@
-# Copyright (c) HashiCorp, Inc.
-# SPDX-License-Identifier: MPL-2.0
-# terraform {
-#   required_providers {
-#     random = {
-#       source = "hashicorp/random"
-#       version = "3.3.2"
-#     }
-#   }
-# }
-
-variable "prefix" {
-  type = string
+variable "prefixes" {
+  type = number
 }
 
-output "name" {
-  value = random_pet.this.id
+# Generate a random prefix name of length __prefixes__
+resource "random_id" "pets" {
+  count = var.prefixes
+  byte_length = 4
 }
 
-resource "time_sleep" "wait_30_seconds" {
-  create_duration = "30s"
-}
-
+# For each prefix, generate a random pet name
 resource "random_pet" "this" {
-  prefix = var.prefix
+  for_each = random_id.pets
+  prefix = each.value
   length = 3
+}
+
+output "prefixes" {
+  # value = random_pet.this.id
+  value = [for n in random_pet.this: n.id]
 }
 
 

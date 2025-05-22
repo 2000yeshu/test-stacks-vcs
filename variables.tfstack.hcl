@@ -1,7 +1,11 @@
 variable "prefixes" {
-  type = set(string)
+  type = number
 }
 
-variable "instances" {
+variable "pet_instances" {
+  type = number
+}
+
+variable "nulls_instances" {
   type = number
 }
