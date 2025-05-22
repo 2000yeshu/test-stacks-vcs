@@ -17,15 +17,8 @@ output "name" {
   value = random_pet.this.id
 }
 
-# Something that takes time
-resource "null_resource" "slow-provisioner" {
-  triggers = {
-    uuid = uuid()
-  }
-
-  provisioner "local-exec" {
-    command = "sleep 30"
-  }
+resource "time_sleep" "wait_30_seconds" {
+  create_duration = "30s"
 }
 
 resource "random_pet" "this" {

@@ -3,7 +3,7 @@
 
 component "pet" {
   for_each = var.prefixes
-  source = "./pet"
+  source   = "./pet"
 
   inputs = {
     prefix = each.value
@@ -11,12 +11,13 @@ component "pet" {
 
   providers = {
     random = provider.random.this
+    time   = provider.time.this
   }
 }
 
 component "nulls" {
   for_each = component.pet
-  source = "./nulls"
+  source   = "./nulls"
 
   inputs = {
     pet       = each.value.name
@@ -25,5 +26,6 @@ component "nulls" {
 
   providers = {
     null = provider.null.this
+    time = provider.time.this
   }
 }

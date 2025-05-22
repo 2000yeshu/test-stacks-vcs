@@ -4,9 +4,9 @@
 
 # terraform {
 #   required_providers {
-#     null = {
-#       source = "hashicorp/null"
-#       version = "3.1.1"
+#     time = {
+#       source = "hashicorp/time"
+#       version = "~>0.13"
 #     }
 #   }
 # }
@@ -25,7 +25,21 @@ resource "null_resource" "this" {
   triggers = {
     pet = var.pet
   }
+
 }
+
+resource "time_sleep" "wait_30_seconds" {
+  create_duration = "30s"
+}
+
+# Something that takes time
+# resource "null_resource" "slow-provisioner" {
+#   triggers = {
+#     uuid = uuid()
+#   }
+
+  
+# }
 
 output "ids" {
   value = [for n in null_resource.this: n.id]
