@@ -4,7 +4,7 @@ To set the number of resources in each deployment(r), we set the number of insta
 
 To set the number of components per deployment(c), we set the length of prefixes to half the desired number(m2).
 
-``python3 generate_deployments d r c``
+``python generate_config.py <num_deployments> <num_pet_components_per_deployment> <num_nulls_components_per_deployment> <num_nulls_instances>``
 
 Deployments Components Resources
 10

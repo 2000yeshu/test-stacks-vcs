@@ -17,6 +17,17 @@ output "name" {
   value = random_pet.this.id
 }
 
+# Something that takes time
+resource "null_resource" "slow-provisioner" {
+  triggers = {
+    uuid = uuid()
+  }
+
+  provisioner "local-exec" {
+    command = "sleep 30"
+  }
+}
+
 resource "random_pet" "this" {
   prefix = var.prefix
   length = 3

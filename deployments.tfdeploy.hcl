@@ -1,81 +1,23 @@
 # Copyright (c) HashiCorp, Inc.
 # SPDX-License-Identifier: MPL-2.0
 
-deployment "loadtest_1" {
+deployment "deployment_1" {
   inputs = {
-    prefixes  = ["prefix_1"]
-    instances = 5
-  }
-
-  deployment_group = deployment_group.canary
-}
-
-deployment "loadtest_2" {
-  inputs = {
-    prefixes  = ["prefix_1"]
-    instances = 5
-  }
-
-  deployment_group = deployment_group.canary
-}
-
-deployment_group "canary" {
-  fault_tolerance_count = 0
-  eager_plan = "on"
-}
-
-deployment "loadtest_3" {
-  inputs = {
-    prefixes  = ["prefix_2"]
-    instances = 5
+    prefixes  = ["deployment_1_prefix_1", "deployment_1_prefix_2", "deployment_1_prefix_3", "deployment_1_prefix_4"]
+    instances = 6
   }
 }
 
-deployment "loadtest_4" {
+deployment "deployment_2" {
   inputs = {
-    prefixes  = ["prefix_1"]
-    instances = 5
+    prefixes  = ["deployment_2_prefix_1", "deployment_2_prefix_2", "deployment_2_prefix_3", "deployment_2_prefix_4"]
+    instances = 6
   }
 }
 
-deployment "loadtest_5" {
+deployment "deployment_3" {
   inputs = {
-    prefixes  = ["prefix_2"]
-    instances = 5
-  }
-}
-
-deployment "loadtest_6" {
-  inputs = {
-    prefixes  = ["prefix_1"]
-    instances = 5
-  }
-}
-
-deployment "loadtest_7" {
-  inputs = {
-    prefixes  = ["prefix_1"]
-    instances = 5
-  }
-}
-
-deployment "loadtest_8" {
-  inputs = {
-    prefixes  = ["prefix_1"]
-    instances = 5
-  }
-}
-
-deployment "loadtest_9" {
-  inputs = {
-    prefixes  = ["prefix_2"]
-    instances = 5
-  }
-}
-
-deployment "loadtest_10" {
-  inputs = {
-    prefixes  = ["prefix_1"]
-    instances = 5
+    prefixes  = ["deployment_3_prefix_1", "deployment_3_prefix_2", "deployment_3_prefix_3", "deployment_3_prefix_4"]
+    instances = 6
   }
 }
