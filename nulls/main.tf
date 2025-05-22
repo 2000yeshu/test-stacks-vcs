@@ -2,14 +2,14 @@
 # SPDX-License-Identifier: MPL-2.0
 
 
-terraform {
-  required_providers {
-    null = {
-      source = "hashicorp/null"
-      version = "3.1.1"
-    }
-  }
-}
+# terraform {
+#   required_providers {
+#     null = {
+#       source = "hashicorp/null"
+#       version = "3.1.1"
+#     }
+#   }
+# }
 
 variable "pet" {
   type = string
