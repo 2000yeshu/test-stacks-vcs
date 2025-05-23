@@ -32,7 +32,7 @@ component "nulls_1" {
   source = "./nulls"
 
   inputs = {
-    pets      = component.pet_1.name[0]
+    pet      = component.pet_1.name[0]
     instances = var.nulls_instances
   }
 
@@ -46,7 +46,7 @@ component "nulls_2" {
   source = "./nulls"
 
   inputs = {
-    pets      = component.pet_2.name[0]
+    pet      = component.pet_2.name[0]
     instances = var.nulls_instances
   }
 
