@@ -3,7 +3,6 @@
 
 deployment "deployment_1" {
   inputs = {
-    pet_instances   = 4
     prefixes        = 3
     nulls_instances = 6
   }
@@ -11,7 +10,6 @@ deployment "deployment_1" {
 
 deployment "deployment_2" {
   inputs = {
-    pet_instances   = 4
     prefixes        = 3
     nulls_instances = 6
   }
@@ -19,7 +17,6 @@ deployment "deployment_2" {
 
 deployment "deployment_3" {
   inputs = {
-    pet_instances   = 4
     prefixes        = 3
     nulls_instances = 6
   }

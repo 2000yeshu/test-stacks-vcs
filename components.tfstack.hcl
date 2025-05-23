@@ -1,8 +1,20 @@
 # Copyright (c) HashiCorp, Inc.
 # SPDX-License-Identifier: MPL-2.0
 
-component "pet" {
-  for_each = var.pet_instances
+component "pet_1" {
+  source   = "./pet"
+  inputs = {
+    prefixes = var.prefixes
+  }
+
+  providers = {
+    random = provider.random.this
+    time   = provider.time.this
+  }
+
+}
+
+component "pet_2" {
   source   = "./pet"
 
   inputs = {
