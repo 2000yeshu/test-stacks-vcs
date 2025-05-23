@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: MPL-2.0
 
 component "pet_1" {
-  source   = "./pet"
+  source = "./pet"
   inputs = {
     prefixes = var.prefixes
   }
@@ -15,7 +15,7 @@ component "pet_1" {
 }
 
 component "pet_2" {
-  source   = "./pet"
+  source = "./pet"
 
   inputs = {
     prefixes = var.prefixes
@@ -28,12 +28,25 @@ component "pet_2" {
 
 }
 
-component "nulls" {
-  for_each = component.pet
-  source   = "./nulls"
+component "nulls_1" {
+  source = "./nulls"
 
   inputs = {
-    pets      = each.value.name
+    pets      = component.pet_1.name
+    instances = var.nulls_instances
+  }
+
+  providers = {
+    null = provider.null.this
+    time = provider.time.this
+  }
+}
+
+component "nulls_2" {
+  source = "./nulls"
+
+  inputs = {
+    pets      = component.pet_2.name
     instances = var.nulls_instances
   }
 
