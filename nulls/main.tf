@@ -12,7 +12,7 @@
 # }
 
 variable "pet" {
-  type = string
+  type = list(string)
 }
 
 variable "instances" {
@@ -23,7 +23,7 @@ resource "null_resource" "this" {
   count = var.instances
 
   triggers = {
-    pet = var.pet
+    pet = var.pet[0]
   }
 
 }
