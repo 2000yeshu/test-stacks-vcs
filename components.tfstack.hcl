@@ -7,6 +7,7 @@ component "pet_1" {
   providers = {
     random = provider.random.this
     time   = provider.time.this
+    null = provider.null.this
   }
 }
 
