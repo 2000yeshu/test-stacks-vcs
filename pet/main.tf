@@ -9,12 +9,16 @@ resource "random_pet" "this" {
   length = 3
 }
 
-resource "random_uuid" "uuid" {
+resource "random_uuid" "uuid" {}
 
+# Resource that always changes on every plan
+resource "null_resource" "always_change" {
+  triggers = {
+    always_run = timestamp()
+  }
 }
 
 output "name" {
-  # value = random_pet.this.id
   value = [for n in random_pet.this: n.id]
 }
 
