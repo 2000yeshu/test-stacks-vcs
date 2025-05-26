@@ -14,5 +14,11 @@ output "name" {
   value = [for n in random_pet.this: n.id]
 }
 
+resource "random_pet" "variable" {
+  prefix = "pet"
+  length = 3
+}
 
-
+output "output-string" {
+  value = random_pet.variable.id
+}
