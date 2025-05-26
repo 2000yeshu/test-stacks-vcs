@@ -11,5 +11,5 @@ deployment "deployment_1" {
 }
 
 publish_output "output-string" {
-  value = deployment.deployment_1.pet_resources_per_component
+  value = deployment.deployment_1.pet_names
 }
