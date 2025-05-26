@@ -10,6 +10,6 @@ deployment "deployment_1" {
   }
 }
 
-publish_output "output-st" {
-  value = deployment.deployment_1.outputs.name
+publish_output "output-string" {
+  value = deployment.deployment_1.pet_names
 }
