@@ -11,6 +11,6 @@ component "pet_1" {
 }
 
 output "pet_name" {
-  value = component.pet_1.name
-    type = list(string)
+  value = component.pet_1.name[0]
+    type = string
 }
