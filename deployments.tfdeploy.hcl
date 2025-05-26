@@ -6,7 +6,7 @@ deployment "deployment_1" {
     prefixes  = 6
 
     # Append nulls_instances-1 because 1 sleep resource is already there
-    nulls_instances = 0
+    nulls_instances = 5
   }
 }
 
@@ -15,7 +15,7 @@ deployment "deployment_2" {
     prefixes  = 6
 
     # Append nulls_instances-1 because 1 sleep resource is already there
-    nulls_instances = 0
+    nulls_instances = 5
   }
 }
 
@@ -24,7 +24,7 @@ deployment "deployment_3" {
     prefixes  = 6
 
     # Append nulls_instances-1 because 1 sleep resource is already there
-    nulls_instances = 0
+    nulls_instances = 5
   }
 }
 
@@ -33,7 +33,7 @@ deployment "deployment_4" {
     prefixes  = 6
 
     # Append nulls_instances-1 because 1 sleep resource is already there
-    nulls_instances = 0
+    nulls_instances = 5
   }
 }
 
@@ -42,6 +42,6 @@ deployment "deployment_5" {
     prefixes  = 6
 
     # Append nulls_instances-1 because 1 sleep resource is already there
-    nulls_instances = 0
+    nulls_instances = 5
   }
 }
