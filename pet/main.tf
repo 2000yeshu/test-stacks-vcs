@@ -19,5 +19,5 @@ output "name" {
 }
 
 output "uuid" {
-  value = random_uuid.uuid.uuid
+  value = random_uuid.uuid.id
 }
