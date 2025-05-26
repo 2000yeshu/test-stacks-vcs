@@ -1,69 +1,77 @@
 import sys
-import random
+import argparse
 
-pet_component = [
-        '# Copyright (c) HashiCorp, Inc.',
-        '# SPDX-License-Identifier: MPL-2.0',
-        '',
-        'component "pet" {',
-        '  for_each = var.prefixes',
-        '  source = "./pet"',
-        '',
-        '  inputs = {',
-        '    prefix = each.value',
-        '  }',
-        '',
-        '  providers = {',
-        '    random = provider.random.this',
-        '  }',
-        '}',
-]
-
-nulls_component = [
-        '',
-        'component "nulls" {',
-        '  for_each = component.pet_1',
-        '  source = "./nulls"',
-        '',
-        '  inputs = {',
-        '    pet       = each.value.name',
-        '    instances = var.instances',
-        '  }',
-        '',
-        '  providers = {',
-        '    null = provider.null.this',
-        '  }',
-        '}',
-]
+resources_dir = '.'
 
 def main():
-    if len(sys.argv) != 5:
-        print("Usage: python generate_config.py <num_deployments> <num_pet_components_per_deployment> <num_nulls_components_per_deployment> <num_nulls_instances>")
-        sys.exit(1)
-    try:
-        num_deployments = int(sys.argv[1])
-        num_pet_components_per_deployment = int(sys.argv[2])
-        num_nulls_components_per_deployment = int(sys.argv[3])
-        num_nulls_instances = int(sys.argv[4])
-    except ValueError:
-        print("Please provide valid integers for all parameters.")
-        sys.exit(1)
+    parser = argparse.ArgumentParser(description="Generate Stack Configuration.")
+    parser.add_argument('--deployments', type=int, required=True, help='Number of deployments')
+    parser.add_argument('--pet-components-per-deployment', type=int, required=True, help='Number of pet components per deployment')
+    parser.add_argument('--nulls-components-per-deployment', type=int, required=True, help='Number of nulls components per deployment')
+    parser.add_argument('--pet-resources', type=int, required=True, help='Number of pet resources per component')
+    parser.add_argument('--nulls-resources', type=int, required=True, help='Number of nulls resources per component')
+
+    args = parser.parse_args()
+
+    num_deployments = args.deployments
+    num_pet_components_per_deployment = args.pet_components_per_deployment
+    num_nulls_components_per_deployment = args.nulls_components_per_deployment
+    num_pet_instances = args.pet_resources
+    num_nulls_instances = args.nulls_resources
 
     if num_pet_components_per_deployment < 1:
         print("WARN: Number of pet components cannot be less than 1.")
         sys.exit(1)
 
-    with open("components.tfstack.hcl", "w") as f:
-            f.write("\n".join(pet_component))
+    if num_pet_instances < 1 or num_nulls_instances < 1:
+        print("ERR: Number of pet or nulls instances cannot be less than 1.")
+        sys.exit(1)
+
+    
+    # Loop and create pet components
+    component_blocks = []
+    for i in range(1, num_pet_components_per_deployment + 1):
+        name = f"pet_{i}"
+        block = f'''component "{name}" {{
+  source = "./pet"
+  inputs = {{
+    prefixes = var.prefixes
+  }}
+
+  providers = {{
+    random = provider.random.this
+    time   = provider.time.this
+  }}
+}}\n'''
+        component_blocks.append(block)
 
     # Add nulls component block if condition is met
-    if num_nulls_components_per_deployment > 0:
-        if num_nulls_components_per_deployment != num_pet_components_per_deployment:
+    if num_nulls_components_per_deployment > 0 and num_nulls_components_per_deployment != num_pet_components_per_deployment:
             print("ERR: Nulls components not zero and not equal to pet components")
             sys.exit(1)
-        
-        with open("components.tfstack.hcl", "w") as f:
-            f.write("\n".join(pet_component + nulls_component))
+
+    for i in range(1, num_nulls_components_per_deployment + 1):
+        name = f"nulls_{i}"
+        pet_name = f"pet_{i}"
+
+        block = f'''component "{name}" {{
+  source = "./nulls"
+
+  inputs = {{
+    pet      = component.{pet_name}.name
+    instances = var.nulls_instances
+  }}
+
+  providers = {{
+    null = provider.null.this
+    time = provider.time.this
+  }}
+}}\n'''
+        component_blocks.append(block)
+
+    with open(f"{resources_dir}/components.tfstack.hcl", "w") as f:
+            f.write("\n".join(component_blocks))
+
 
     blocks = [
         '# Copyright (c) HashiCorp, Inc.',
@@ -71,28 +79,20 @@ def main():
         ''
     ]
 
-    # Generate prefix pool
-    # prefix_pool = [f"prefix_{i}" for i in range(1, num_components + 1)]
-    # num_prefixes = num_components // 2
-
     for i in range(1, num_deployments + 1):
         name = f"deployment_{i}"
-        # Randomly select num_prefixes from the prefix pool
-
-        # Create num_pet_components_per_deployment number of prefixes
-        selected_prefixes = [f"deployment_{i}_prefix_{j}" for j in range(1, num_pet_components_per_deployment + 1)]
-        # selected_prefixes = random.sample(prefix_pool, num_prefixes)
-        prefixes_str = '[' + ', '.join(f'"{prefix}"' for prefix in selected_prefixes) + ']'
         
         block = f'''deployment "{name}" {{
   inputs = {{
-    prefixes  = {prefixes_str}
-    instances = {num_nulls_instances}
+    prefixes  = {num_pet_instances}
+
+    # Append nulls_instances-1 because 1 sleep resource is already there
+    nulls_instances = {num_nulls_instances-1}
   }}
 }}\n'''
         blocks.append(block)
 
-    with open("deployments.tfdeploy.hcl", "w") as f:
+    with open(f"{resources_dir}/deployments.tfdeploy.hcl", "w") as f:
         f.write("\n".join(blocks))
     print(f"Generated {num_deployments} deployment blocks in deployments.tfdeploy.hcl with {num_pet_components_per_deployment} pet each and {num_nulls_components_per_deployment} nulls each and total {num_nulls_instances} nulls instances.")
 
