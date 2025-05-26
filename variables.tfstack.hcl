@@ -1,8 +1,8 @@
-variable "prefixes" {
+variable "pet_resources_per_component" {
   type = number
 }
 
 
-variable "nulls_instances" {
+variable "null_resources_per_component" {
   type = number
 }

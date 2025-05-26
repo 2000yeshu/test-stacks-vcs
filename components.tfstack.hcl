@@ -1,7 +1,7 @@
 component "pet_1" {
   source = "./pet"
   inputs = {
-    prefixes = var.prefixes
+    no_of_pets = var.pet_resources_per_component
   }
 
   providers = {
@@ -13,7 +13,7 @@ component "pet_1" {
 component "pet_2" {
   source = "./pet"
   inputs = {
-    prefixes = var.prefixes
+    no_of_pets = var.pet_resources_per_component
   }
 
   providers = {
@@ -25,7 +25,7 @@ component "pet_2" {
 component "pet_3" {
   source = "./pet"
   inputs = {
-    prefixes = var.prefixes
+    no_of_pets = var.pet_resources_per_component
   }
 
   providers = {
@@ -37,7 +37,7 @@ component "pet_3" {
 component "pet_4" {
   source = "./pet"
   inputs = {
-    prefixes = var.prefixes
+    no_of_pets = var.pet_resources_per_component
   }
 
   providers = {
@@ -49,7 +49,7 @@ component "pet_4" {
 component "pet_5" {
   source = "./pet"
   inputs = {
-    prefixes = var.prefixes
+    no_of_pets = var.pet_resources_per_component
   }
 
   providers = {
@@ -63,7 +63,7 @@ component "nulls_1" {
 
   inputs = {
     pet      = component.pet_1.name
-    instances = var.nulls_instances
+    instances = var.null_resources_per_component
   }
 
   providers = {
@@ -77,7 +77,7 @@ component "nulls_2" {
 
   inputs = {
     pet      = component.pet_2.name
-    instances = var.nulls_instances
+    instances = var.null_resources_per_component
   }
 
   providers = {
@@ -91,7 +91,7 @@ component "nulls_3" {
 
   inputs = {
     pet      = component.pet_3.name
-    instances = var.nulls_instances
+    instances = var.null_resources_per_component
   }
 
   providers = {
@@ -105,7 +105,7 @@ component "nulls_4" {
 
   inputs = {
     pet      = component.pet_4.name
-    instances = var.nulls_instances
+    instances = var.null_resources_per_component
   }
 
   providers = {
@@ -119,7 +119,7 @@ component "nulls_5" {
 
   inputs = {
     pet      = component.pet_5.name
-    instances = var.nulls_instances
+    instances = var.null_resources_per_component
   }
 
   providers = {

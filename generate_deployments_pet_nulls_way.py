@@ -35,7 +35,7 @@ def main():
         block = f'''component "{name}" {{
   source = "./pet"
   inputs = {{
-    prefixes = var.prefixes
+    no_of_pets = var.pet_resources_per_component
   }}
 
   providers = {{
@@ -59,7 +59,7 @@ def main():
 
   inputs = {{
     pet      = component.{pet_name}.name
-    instances = var.nulls_instances
+    instances = var.null_resources_per_component
   }}
 
   providers = {{
@@ -84,10 +84,10 @@ def main():
         
         block = f'''deployment "{name}" {{
   inputs = {{
-    prefixes  = {num_pet_instances}
+    pet_resources_per_component  = {num_pet_instances}
 
     # Append nulls_instances-1 because 1 sleep resource is already there
-    nulls_instances = {num_nulls_instances-1}
+    null_resources_per_component = {num_nulls_instances-1}
   }}
 }}\n'''
         blocks.append(block)

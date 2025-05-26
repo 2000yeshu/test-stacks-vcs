@@ -1,10 +1,10 @@
-variable "prefixes" {
+variable "no_of_pets" {
   type = number
 }
 
 # For each prefix, generate a random pet name
 resource "random_pet" "this" {
-  count =  var.prefixes
+  count =  var.no_of_pets
   prefix = "pet"
   length = 3
 }
