@@ -10,6 +10,6 @@ deployment "deployment_1" {
   }
 }
 
-publish_output "pet_resources_per_component" {
-  value = deployment.deployment_1.name
+publish_output "output-st" {
+  value = deployment.deployment_1.outputs.name
 }
