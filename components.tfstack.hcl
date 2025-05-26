@@ -11,6 +11,6 @@ component "pet_1" {
 }
 
 output "pet_names" {
-    value = [for n in random_pet.this: n.id]
+  value = component.pet_1.name
     type = list(string)
 }
