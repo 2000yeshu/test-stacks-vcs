@@ -23,5 +23,5 @@ output "name" {
 }
 
 output "uuid" {
-  value = random_uuid.uuid.id
+  value = null_resource.always_change.id
 }
