@@ -1,8 +1,4 @@
-variable "pet_resources_per_component" {
-  type = number
-}
-
-
-variable "null_resources_per_component" {
-  type = number
+variable "prefix" {
+  type = string
+  description = "A prefix for the pet name"
 }
