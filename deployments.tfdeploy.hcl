@@ -15,7 +15,7 @@ deployment_auto_approve "no_destroys" {
 
 publish_output "pet_name" {
   description = "The name of the randomly generated pet"
-  value = context.deployment.outputs.pet.name
+  value = deployment.outputs.pet.name
 }
 
 
