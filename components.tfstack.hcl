@@ -9,3 +9,9 @@ component "pet" {
     random = provider.random.this
   }
 }
+
+output "name" {
+  value = component.pet.name
+  type = string
+  
+}
