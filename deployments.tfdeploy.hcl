@@ -6,6 +6,7 @@ deployment "pet_new" {
   }
 }
 
-
-
-# Insert downstream deployments here
+publish_output "pet_name" {
+  description = "The name of the randomly generated pet"
+  value = deployment.pet_new.outputs.name
+}
