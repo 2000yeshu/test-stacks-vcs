@@ -3,8 +3,10 @@
 deployment "pet_new_new" {
   inputs = {
     prefix = "pet"
-    timestamp = timestamp()
+    timestamp = "Mon Jul 28 2025 17:46:59 GMT+0530 (India Standard Time)"
   }
+
+  auto_apply = true
 }
 
 publish_output "pet_name" {
