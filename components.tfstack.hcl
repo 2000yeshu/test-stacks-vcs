@@ -3,6 +3,7 @@ component "pet" {
 
   inputs = {
     prefix = var.prefix
+    timestamp = var.timestamp
   }
 
   providers = {

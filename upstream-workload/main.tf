@@ -3,13 +3,18 @@ variable "prefix" {
   description = "A prefix for the pet name"
 }
 
+variable timestamp {
+  type        = string
+  description = "A timestamp to ensure resource uniqueness"
+}
+
 resource "random_pet" "this" {
   length = 3
   prefix = var.prefix
 
-#   keepers = {
-#     timestamp = timestamp()
-#   }
+  keepers = {
+    timestamp = var.timestamp
+  }
 }
 
 output "name" {
