@@ -10,8 +10,8 @@ component "pet" {
   }
 }
 
-output "name" {
+
+publish_output "pet_name" {
+  description = "The name of the randomly generated pet"
   value = component.pet.name
-  type = string
-  
 }
