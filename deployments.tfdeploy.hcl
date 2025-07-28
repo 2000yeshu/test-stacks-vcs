@@ -8,5 +8,5 @@ deployment "pet_new" {
 
 publish_output "pet_name" {
   description = "The name of the randomly generated pet"
-  value = deployment.pet_new.outputs.name
+  value = deployment.pet_new.pet
 }
